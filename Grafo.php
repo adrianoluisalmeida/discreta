@@ -11,18 +11,18 @@ class Grafo
     /**
      * @var int
      */
-    private $vertices;
+    public $vertices;
 
     /**
      * @var int
      */
-    private $arestas;
+    public $arestas;
 
 
     /**
      * Vertice @var
      */
-    private $adj = [];
+    public $adj = [];
 
 
     /**
@@ -74,16 +74,19 @@ class Grafo
 
         echo "Vértices " . $this->vertices . " Arestas " . $this->arestas;
 
-        for($i = 0; $i < $this->vertices; $i++){
-            echo " " . $i . "<br/>";
+        echo "<br/>";
+        $i = 0;
+        for($i; $i < $this->vertices; $i++){
+            echo "v" . $i . ": ";
             $ad = $this->adj[$i]->cab;
 
             while($ad){
-                echo "v (" . $ad->vertice.  ") " . $ad->peso  . " ";
+                echo "v" . $ad->vertice.  " (" . $ad->peso  . ") ";
 
                 $ad = $ad->prox;
             }
 
+            echo "<br/>";
 
         }
     }
