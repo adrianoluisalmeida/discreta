@@ -399,6 +399,7 @@
         </div>
     </div>
 </div>
+
 <?php
 
 require "Adjacencia.php";
@@ -421,5 +422,29 @@ $gr->imprimi();
     </div>
 </footer>
 <!--<script async src='assets/js.min.js'></script>-->
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var i = 0;
+        $('a').click(function (e) {
+            e.preventDefault();
+            i++;
+
+            if(i == 1)
+                $("#location_geo").val($(this).attr('name'));
+            else
+                $("#location").val($(this).attr('name'));
+
+
+            
+        })
+    })
+</script>
+
 </body>
+
 </html>
