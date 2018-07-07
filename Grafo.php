@@ -72,16 +72,25 @@ class Grafo
      */
     public function imprimi(){
 
+        $estados = [
+            'Rio Grande do Sul',
+            'Paraná',
+            'Goiás',
+            'Mato Grosso',
+            'Pará'
+        ];
+
+
         echo "Vértices " . $this->vertices . " Arestas " . $this->arestas;
 
         echo "<br/>";
         $i = 0;
         for($i; $i < $this->vertices; $i++){
-            echo "v" . $i . ": ";
+            echo "v" . $estados[$i] . ": ";
             $ad = $this->adj[$i]->cab;
 
             while($ad){
-                echo "v" . $ad->vertice.  " (" . $ad->peso  . ") ";
+                echo "v" . $estados[$ad->vertice].  " (" . $ad->peso  . ") ";
 
                 $ad = $ad->prox;
             }

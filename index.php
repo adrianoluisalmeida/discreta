@@ -405,16 +405,37 @@
 require "Adjacencia.php";
 require "Grafo.php";
 require "Vertice.php";
+require "Dijkstra.php";
 
-$gr = new Grafo(5);
+$gr = new Grafo(6);
 
-$gr->criaAresta(0, 1, 2);
-$gr->criaAresta(1, 2, 4);
-$gr->criaAresta(2, 0, 12);
-$gr->criaAresta(2, 4, 40);
-$gr->criaAresta(3, 1, 3);
-$gr->criaAresta(4, 3, 8);
+$estados = [
+        'Rio Grande do Sul',
+        'Paraná',
+        'Goiás',
+        'Mato Grosso'
+];
+
+$gr->criaAresta(0, 1, 10);
+$gr->criaAresta(0, 2, 5);
+$gr->criaAresta(2, 1, 3);
+$gr->criaAresta(1, 3, 1);
+$gr->criaAresta(2, 3, 8);
+$gr->criaAresta(2, 4, 2);
+$gr->criaAresta(4, 5, 6);
+$gr->criaAresta(3, 5, 4);
+$gr->criaAresta(3, 4, 4);
 $gr->imprimi();
+
+$d = new Dijkstra();
+$funD = $d->funDijkstra($gr, 0);
+
+//var_dump($funD);
+//die;
+
+for ($i = 0; $i<$gr->vertices; $i++)
+    echo "D(v0 -> v" . $i . ") = " . $funD[$i] . "<br/>";
+
 ?>
 <footer class="footer container container-palette">
     <div class="footer-bottom">
@@ -440,7 +461,7 @@ $gr->imprimi();
                 $("#location").val($(this).attr('name'));
 
 
-            
+
         })
     })
 </script>
