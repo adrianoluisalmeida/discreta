@@ -43,7 +43,7 @@
                         </div>
 
                         <?php if($_GET['cost']): ?>
-                          <?php echo "Distância total: " . $_GET['cost']; ?>
+                          <?php echo "Distância total: " . $_GET['cost'] . " km"; ?>
                         <?php endif; ?>
                         <div class="form-group form-group-btns">
                             <button type="submit" href="#" id="btn-search" class="btn btn-custom btn-custom-secondary btn-wide">Buscar</a>
