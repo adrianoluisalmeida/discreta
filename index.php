@@ -37,7 +37,7 @@
                         <div class="form-group"><input type="text" class="form-control" id="distance" placeholder="Distância mais curta"/></div>
 
                         <div class="form-group form-group-btns">
-                            <a href="#" class="btn btn-custom btn-custom-secondary btn-wide">Buscar</a>
+                            <a href="#" id="btn-search" class="btn btn-custom btn-custom-secondary btn-wide">Buscar</a>
                         </div>
                     </form>
                 </div>
@@ -402,39 +402,40 @@
 
 <?php
 
-require "Adjacencia.php";
-require "Grafo.php";
-require "Vertice.php";
-require "Dijkstra.php";
-
-$gr = new Grafo(6);
-
-$estados = [
-        'Rio Grande do Sul',
-        'Paraná',
-        'Goiás',
-        'Mato Grosso'
-];
-
-$gr->criaAresta(0, 1, 10);
-$gr->criaAresta(0, 2, 5);
-$gr->criaAresta(2, 1, 3);
-$gr->criaAresta(1, 3, 1);
-$gr->criaAresta(2, 3, 8);
-$gr->criaAresta(2, 4, 2);
-$gr->criaAresta(4, 5, 6);
-$gr->criaAresta(3, 5, 4);
-$gr->criaAresta(3, 4, 4);
-$gr->imprimi();
-
-$d = new Dijkstra();
-$funD = $d->funDijkstra($gr, 0);
+require "Graph.php";
+//require "Grafo.php";
+//require "Vertice.php";
+//require "Dijkstra.php";
+//
+//$gr = new Grafo(6);
+//
+//$estados = [
+//        'Rio Grande do Sul',
+//        'Paraná',
+//        'Goiás',
+//        'Mato Grosso'
+//];
+//
+//$gr->criaAresta(0, 1, 10);
+//$gr->criaAresta(0, 2, 5);
+//$gr->criaAresta(2, 1, 3);
+//$gr->criaAresta(1, 3, 1);
+//$gr->criaAresta(2, 3, 8);
+//$gr->criaAresta(2, 4, 2);
+//$gr->criaAresta(4, 5, 6);
+//$gr->criaAresta(3, 5, 4);
+//$gr->criaAresta(3, 4, 4);
+//$gr->imprimi();
+//
+//$d = new Dijkstra();
+//$funD = $d->funDijkstra($gr, 0);
 
 //var_dump($funD);
 //die;
 
-for ($i = 0; $i<$gr->vertices; $i++)
-    echo "D(v0 -> v" . $i . ") = " . $funD[$i] . "<br/>";
+//for ($i = 0; $i<$gr->vertices; $i++)
+//    echo "D(v0 -> v" . $i . ") = " . $funD[$i] . "<br/>";
+
 
 ?>
 <footer class="footer container container-palette">
@@ -459,11 +460,15 @@ for ($i = 0; $i<$gr->vertices; $i++)
                 $("#location_geo").val($(this).attr('name'));
             else
                 $("#location").val($(this).attr('name'));
+        });
 
-
-
+        $("#btn-search").click(functiion(){
+          alert("teste");
         })
-    })
+
+    });
+
+
 </script>
 
 </body>
