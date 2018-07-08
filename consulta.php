@@ -1,6 +1,9 @@
 <?php
-
+require "Graph.php";
 $graph = Graph::create();
+
+
+var_dump($_POST);
 
 $graph
     ->add('Rio Grande do Sul', 'Santa Catarina', 1)
@@ -15,7 +18,7 @@ $graph
     ->add('Rio de Janeiro', 'Espírito Santo', 3)
     ->add('Espírito Santo', 'Bahia', 1);
 
-$route = $graph->search('Rio Grande do Sul', 'Goiás'); // ['s', 'b', 'c', 'd', 't']
+$route = $graph->search($_POST['origem'], $_POST['destino']); // ['s', 'b', 'c', 'd', 't']
 $cost  = $graph->cost($route);     // 6.0
 
-echo ['route' => $route, 'cost' => $cost];
+Header("Location: index.php?origem=" . $_POST['origem'] .  "&destino=".$_POST['destino']."&cost=".$cost."&route=" . implode("->", $route));

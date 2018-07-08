@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
+
     <title>Jobs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900%7COpen+Sans" rel="stylesheet"/>
@@ -31,13 +31,22 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="local-form">
-                    <form action="#">
-                        <div class="form-group"><input type="text" class="form-control" id='location_geo' placeholder="Origem"/></div>
-                        <div class="form-group"><input type="text" class="form-control" id="location" placeholder="Destino"/></div>
-                        <div class="form-group"><input type="text" class="form-control" id="distance" placeholder="Distância mais curta"/></div>
+                    <form action="consulta.php" method="POST">
+                        <div class="form-group">
+                          <input type="text" class="form-control" value="<?php echo $_GET['origem'] ?>" name="origem" id='location_geo' placeholder="Origem"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" value="<?php echo $_GET['destino'] ?>" name="destino" id="location" placeholder="Destino"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" value="<?php echo $_GET['route'] ?>" class="form-control" id="distance" placeholder="Distância mais curta"/>
+                        </div>
 
+                        <?php if($_GET['cost']): ?>
+                          <?php echo "Distância total: " . $_GET['cost']; ?>
+                        <?php endif; ?>
                         <div class="form-group form-group-btns">
-                            <a href="#" id="btn-search" class="btn btn-custom btn-custom-secondary btn-wide">Buscar</a>
+                            <button type="submit" href="#" id="btn-search" class="btn btn-custom btn-custom-secondary btn-wide">Buscar</a>
                         </div>
                     </form>
                 </div>
@@ -402,7 +411,7 @@
 
 <?php
 
-require "Graph.php";
+
 //require "Grafo.php";
 //require "Vertice.php";
 //require "Dijkstra.php";
@@ -457,13 +466,17 @@ require "Graph.php";
             i++;
 
             if(i == 1)
-                $("#location_geo").val($(this).attr('name'));
+              $("[name='origem']").val($(this).attr('name'));
             else
-                $("#location").val($(this).attr('name'));
+              $("[name='destino']").val($(this).attr('name'));
         });
 
-        $("#btn-search").click(functiion(){
-          alert("teste");
+        $("#btn-search").click(function(){
+          var origem = $("[name='origem']").val();
+          var dest = $("[name='destino']").val();
+
+
+
         })
 
     });
